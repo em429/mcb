@@ -10,12 +10,20 @@ print(len(sys.argv))
 
 if len(sys.argv) == 2:
     # mcb list -- list keywords
-    if sys.argv[1].lower() == 'list':
+    if sys.argv[1] == '--list' or sys.argv[1] == '-l':
         print(str(list(shelfFile.keys())))
-    elif sys.argv[1] == '-l' and sys.argv[2] in shelfFile:
-        print(shelfFile[sys.argv[2]])
+    elif sys.argv[1] in shelfFile:
+        print(shelfFile[sys.argv[1]])
         pyperclip.copy(shelfFile[sys.argv[1]])
     else:
-        shelfFile[sys.argv[1]] = pyperclip.paste()
+        print('Keyword not found')
+
+if len(sys.argv) == 3:
+    if sys.argv[1] == '--save' or sys.argv[1] == '-s':
+        shelfFile[sys.argv[2]] = pyperclip.paste()
+    elif sys.argv[1] == '--delete' and sys.argv[2] == '--all' or '-a':
+        shelfFile.clear()
+    elif sys.argv[1] == '--delete' or sys.argv[1] == '-d' and sys.argv[2] in list(shelfFile.keys()):
+        del shelfFile[sys.argv[2]]
 
 shelfFile.close()
