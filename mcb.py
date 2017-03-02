@@ -6,8 +6,6 @@ import sys, shelve, pyperclip
 
 shelfFile = shelve.open('mcbData')
 
-print(len(sys.argv))
-
 if len(sys.argv) == 2:
     # mcb list -- list keywords
     if sys.argv[1] == '--list' or sys.argv[1] == '-l':
