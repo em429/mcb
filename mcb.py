@@ -1,4 +1,4 @@
-#!/usr/local/bin/python3
+#!/usr/bin/env python3
 # mcb.py | saves clipboard text under keywords, or loads a saved clipboard
 # state into the current clipboard.
 
